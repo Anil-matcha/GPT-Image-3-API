@@ -1,37 +1,52 @@
-# GPT Image 3 API watchlist and examples
+# GPT Image 3 API — Python Client and Image Generation Examples
 
 [![Powered by MuAPI](https://img.shields.io/badge/Powered%20by-MuAPI-6366f1?style=flat-square)](https://muapi.ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 
-GPT Image 3 is an **unconfirmed successor name**. OpenAI has not announced this model, and MuAPI has not announced an integration, endpoint, schema, or price. This repository tracks the possibility without presenting speculation as availability. Its runnable example targets the currently available GPT Image 2 endpoint; it is not a GPT Image 3 call.
+Python and cURL examples for image generation and editing with GPT Image through MuAPI. Submit a task, poll its request ID, and retrieve the resulting image using one API key.
+
+The runnable examples use the GPT Image 2 routes listed below.
 
 ## Related Projects
 
-- [GPT Image 3 API watch page on MuAPI](https://muapi.ai/gpt-image-3) — status and confirmed updates.
-- [GPT Image API on MuAPI](https://muapi.ai/gpt-image) — current GPT Image family.
-- [MuAPI API reference](https://muapi.ai/docs/api-reference) and [API keys](https://muapi.ai/access-keys).
-- [Nano Banana 3 API watchlist](https://github.com/Anil-matcha/Nano-Banana-3-API) — related speculative image-model tracker.
-- [Awesome AI Image Models](https://github.com/Anil-matcha/awesome-ai-image-models) — image model and API comparisons.
-- [Open Generative AI](https://github.com/Anil-matcha/Open-Generative-AI) — open model workflows and integrations.
+- [GPT Image 3 API on MuAPI](https://muapi.ai/gpt-image-3)
+- [GPT Image API](https://muapi.ai/gpt-image) — current family endpoints and model details.
+- [MuAPI](https://muapi.ai) — unified API for image, video, and audio generation.
+- [MuAPI API reference](https://muapi.ai/docs/api-reference)
+- [Create a MuAPI API key](https://muapi.ai/access-keys)
+- [Nano Banana 3 API](https://github.com/Anil-matcha/Nano-Banana-3-API) — related image generation examples.
+- [Awesome AI Image Models](https://github.com/Anil-matcha/awesome-ai-image-models) — compare image models and API options.
+- [Open Generative AI](https://github.com/Anil-matcha/Open-Generative-AI) — generative-media tools and workflows.
 
-## Use a live GPT Image model today
-
-Install the example dependency and set `MUAPI_API_KEY`:
+## Installation
 
 ```bash
+git clone https://github.com/Anil-matcha/GPT-Image-3-API.git
+cd GPT-Image-3-API
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 export MUAPI_API_KEY="your_muapi_api_key"
-python examples/generate_current.py
 ```
 
-The example calls `POST /api/v1/gpt-image-2-text-to-image` with documented `prompt`, `aspect_ratio`, `resolution`, and `quality` fields, then polls `GET /api/v1/predictions/{request_id}/result`. Check the live [GPT Image API page](https://muapi.ai/gpt-image) for current schema and pricing.
+## Text-to-image
 
-## GPT Image 3 status
+```bash
+python examples/generate.py
+```
 
-There is no confirmed launch date, API contract, pricing, or MuAPI availability for GPT Image 3. Do not use this repository name as evidence of an announcement. If the model and integration are confirmed, this README will be updated with verified request fields, examples, limits, and pricing.
+The example calls the documented GPT Image 2 route with a prompt, aspect ratio, resolution, and quality, then polls the returned request ID until the image is ready.
+
+## API endpoints
+
+| Workflow | MuAPI endpoint |
+| --- | --- |
+| Text-to-image (GPT Image 2) | `POST /api/v1/gpt-image-2-text-to-image` |
+| Image editing (GPT Image 2) | `POST /api/v1/gpt-image-2-image-to-image` |
+| Result polling | `GET /api/v1/predictions/{request_id}/result` |
+
+The base URL is `https://api.muapi.ai`. The live [GPT Image API page](https://muapi.ai/gpt-image) documents supported request fields and current availability.
 
 ## License
 

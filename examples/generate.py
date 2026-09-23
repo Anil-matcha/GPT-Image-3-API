@@ -1,4 +1,4 @@
-"""Runnable GPT Image 2 example; GPT Image 3 is not yet confirmed."""
+"""Generate an image through MuAPI's GPT Image endpoint."""
 
 import os
 import time
@@ -17,7 +17,7 @@ def main():
         headers=headers,
         json={
             "prompt": "A minimalist travel poster of a red tram in Lisbon at sunset",
-            "aspect_ratio": "3:2",
+            "aspect_ratio": "16:9",
             "resolution": "1K",
             "quality": "medium",
         },
